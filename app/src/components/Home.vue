@@ -47,10 +47,33 @@
           <li>111</li>
           <li>222</li>
           <li>333</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
         </ul>
       </div>
       <div class="right-menu">
-        <i class="el-icon-edit-outline"></i>
+        <ul>
+
+          <li><a href="#/article" target="_blank"><i class="el-icon-edit"></i></a></li>
+          <li><i class="el-icon-caret-top" v-on:click="goTop"></i></li>
+        </ul>
+
       </div>
     </div>
     <!--<footer-components></footer-components>-->
@@ -72,6 +95,9 @@ export default {
     HeaderComponents, FooterComponents
   },
   methods: {
+    goTop: function () {
+      document.body.scrollTop = document.documentElement.scrollTop = 0
+    }
   },
   created: function () {
   }
@@ -80,6 +106,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .right-menu ul li{
+    list-style-type: none;
+    position: relative;
+    margin-left: -17px;
+    margin-top: 20px;
+  }
   .right-menu{
     height: 120px;
     width: 52px;
