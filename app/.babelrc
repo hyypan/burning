@@ -1,13 +1,11 @@
 {
   "presets": [
-    ["env", {
-      "modules": false
-    }],
-    "stage-2"
+    ["es2015", { "modules": false }]
   ],
-  "plugins": ["transform-runtime"],
-  "env": {
-    "test": {
-      "presets": ["env", "stage-2"]    }
-  }
+  "plugins": [["component", [
+    {
+      "libraryName": "element-ui",
+      "styleLibraryName": "theme-chalk"
+    }
+  ]]]
 }
