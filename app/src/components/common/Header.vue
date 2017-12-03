@@ -29,12 +29,20 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      input: 0
+      input: 0,
+      open: false
     }
   },
   methods: {
     changeSide () {
-      $('.sidebar').addClass('open')
+      if (this.open) {
+        $('.sidebar').removeClass('open')
+        this.open = false
+      } else {
+        console.log('ss')
+        $('.sidebar').addClass('open')
+        this.open = true
+      }
     }
   },
   created: function () {
