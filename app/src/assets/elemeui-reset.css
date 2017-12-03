@@ -1,0 +1,19 @@
+.el-icon-edit-outline{
+  transform:scale(2);//设置缩放比例
+  -ms-transform:scale(2);
+  -webkit-transform:scale(2);
+  -o-transform:scale(2);
+  -moz-transform:scale(2);
+  margin-left: 18px;
+  margin-top: 15px;
+}
+.el-icon-tickets{
+  transform:scale(2);//设置缩放比例
+  -ms-transform:scale(2);
+  -webkit-transform:scale(2);
+  -o-transform:scale(2);
+  -moz-transform:scale(2);
+  margin-left: 17px;
+  margin-top: 12px;
+
+}

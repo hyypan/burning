@@ -27,7 +27,31 @@
           </div>
         </div>
       </div>
-      <div class="content guide with-sidebar components-guide"></div>
+      <div class="content guide with-sidebar components-guide">
+        <ul>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+          <li>111</li>
+          <li>222</li>
+          <li>333</li>
+        </ul>
+      </div>
+      <div class="right-menu">
+        <i class="el-icon-edit-outline"></i>
+      </div>
     </div>
     <!--<footer-components></footer-components>-->
   </div>
@@ -56,6 +80,25 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .right-menu{
+    height: 120px;
+    width: 52px;
+    position: fixed;
+    top: 200px;
+    right: 29px;
+    z-index: 2;
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    background: #f9f9f9;
+
+  }
+  .content{
+    position: relative;
+    padding: 2.2em 0;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-left: 50px;
+  }
   .mobile-list{
     display: none;
   }

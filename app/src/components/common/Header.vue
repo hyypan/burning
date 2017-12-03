@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="mobile-bar">
-      <span v-on:click="changeSide"><i class="el-icon-success"></i></span>
+      <span v-on:click="changeSide"><i class="el-icon-tickets"></i></span>
       <a class="log" href="/"></a>
     </div>
     <div id="head">
