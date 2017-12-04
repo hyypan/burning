@@ -174,6 +174,12 @@ export default {
   }
   }
   @media screen and (max-width: 900px) {
+    .content.with-sidebar {
+      margin: auto;
+    }
+    .content{
+      padding-left: 0;
+    }
     .sidebar{
       box-sizing: border-box;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
