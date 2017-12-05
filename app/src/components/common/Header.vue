@@ -29,7 +29,7 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      input: 0,
+      input: '',
       open: false
     }
   },

@@ -1,13 +1,11 @@
 <template>
   <div class="article">
-    <el-select v-model="value4" clearable placeholder="请选择">
-      <el-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-      </el-option>
-    </el-select>
+    <select v-model="category">
+      <option value="Python">Python</option>
+      <option value="Linux">Linux</option>
+      <option value="Linux">生活</option>
+      <option value="Linux">游戏</option>
+    </select>
     <quill-editor v-model="articles"></quill-editor>
     <el-button type="info" plain>发布</el-button>
   </div>
@@ -38,7 +36,7 @@
           value: '选项5',
           label: '北京烤鸭'
         }],
-        value4: '请选择主题'
+        category: 'Python'
       }
     },
     watch: {
