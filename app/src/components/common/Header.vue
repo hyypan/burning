@@ -6,17 +6,14 @@
     </div>
     <div id="head">
       <a id="log" href="/">
-        <img src="../../assets/logo.png"/>
+        <img src="../../assets/logo.jpg"/>
         <span>Burning</span>
       </a>
       <ul id="nav">
         <li>
           <el-input v-model="input" placeholder="请输入内容"></el-input>
         </li>
-        <li>python</li>
-        <li>Linux</li>
-        <li>生活</li>
-        <li>游戏</li>
+        <li v-for="item in items" class="otherLi">{{item}}</li>
       </ul>
     </div>
   </div>
@@ -30,8 +27,15 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       input: '',
-      open: false
+      open: false,
+      items: ['Vue', 'Python', 'Linux', '生活', '游戏']
     }
+  },
+  mounted: function () {
+    $('.otherLi').eq(0).addClass('bottomLine')
+    $('.otherLi').hover(function () {
+      $(this).addClass('bottomLine').siblings().removeClass('bottomLine')
+    })
   },
   methods: {
     changeSide () {
@@ -44,6 +48,7 @@ export default {
         this.open = true
       }
     }
+
   },
   created: function () {
   }
@@ -52,6 +57,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .bottomLine{
+    border-bottom: 2px solid #22de64;
+
+  }
+
   #mobile-bar {
     position: fixed;
     top: 0;
@@ -67,7 +77,7 @@ export default {
     position: absolute;
     width: 30px;
     height: 30px;
-    background: url("../../assets/logo.png") center center no-repeat;
+    background: url("../../assets/logo.jpg") center center no-repeat;
     top: 5px;
     left: 50%;
     margin-left: -15px;
@@ -117,6 +127,7 @@ export default {
     display: inline-block;
     position: relative;
     margin: 0 0.6em;
+    height: 34px
   }
   @media screen and (max-width: 900px) {
     #nav li{

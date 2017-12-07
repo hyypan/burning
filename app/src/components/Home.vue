@@ -8,21 +8,11 @@
             <li>
               <el-input v-model="input" placeholder="请输入内容"></el-input>
             </li>
-            <li>python</li>
-            <li>Linux</li>
-            <li>生活</li>
-            <li>游戏</li>
+          <li v-for="item in items" class="otherLi-h">{{item}}</li>
           </ul>
           <div class="list">
             <ul class="articles">
-              <li>django 模型中的orm操作详细讲解以及数据库的查询优化方法</li>
-              <li>b</li>
-              <li>c</li>
-              <li>d</li>
-              <li>e</li>
-              <li>f</li>
-              <li>g</li>
-
+          <li v-for="item in Articles" class="otherLi-h">{{item}}</li>
             </ul>
           </div>
         </div>
@@ -35,10 +25,11 @@
       <div class="right-menu">
         <ul>
 
-          <li><a href="#/article" target="_blank"><i class="el-icon-edit"></i></a></li>
-          <li><i class="el-icon-caret-top" v-on:click="goTop"></i></li>
+          <li><a href="#/article" target="_blank"><i class="el-icon-edit-outline"></i></a></li>
+          <li><i class="el-icon-share"></i></li>
+          <li><i class="el-icon-setting"></i></li>
+          <li><i class="el-icon-arrow-up" v-on:click="goTop"></i></li>
         </ul>
-
       </div>
     </div>
     <!--<footer-components></footer-components>-->
@@ -53,11 +44,20 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      input: ''
+      input: '',
+      items: ['Vue', 'Python', 'Linux', '生活', '游戏'],
+      Articles: ['Django建模', 'Mysql数据库讲解', 'Linux初识', 'Vue的初步学习', '运维之路', 'sql优化的n种方法']
+
     }
   },
   components: {
     HeaderComponents, FooterComponents
+  },
+  mounted: function () {
+    $('.otherLi-h').eq(0).addClass('bottomLine')
+    $('.otherLi-h').hover(function () {
+      $(this).addClass('bottomLine').siblings().removeClass('bottomLine')
+    })
   },
   methods: {
     goTop: function () {
@@ -71,17 +71,29 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .mobile-list li{
+    display: list-item;
+
+  }
+  .bottomLine{
+    border-bottom: 2px solid #22de64;
+
+  }
   .right-menu ul li{
     list-style-type: none;
     position: relative;
-    margin-left: -17px;
+    margin-left: -22px;
     margin-top: 20px;
+    text-decoration:none;
+    color:#333;
+  }
+  i{
+    color: black;
   }
   .right-menu{
-    height: 120px;
     width: 52px;
     position: fixed;
-    top: 200px;
+    bottom: 10px;
     right: 29px;
     z-index: 2;
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -128,10 +140,14 @@ export default {
     margin: 0;
     line-height: 1.5em;
     padding-left: 1em;
+    margin-bottom: 40px;
+
   }
-  .sidebar-inner ul li{
+  .articles  li{
     display: list-item;
     text-align: -webkit-match-parent;
+    margin-top: 7px;
+
   }
   @media screen and (max-width: 1300px){
   .content.with-sidebar {
