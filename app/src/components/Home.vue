@@ -119,6 +119,7 @@ export default {
     z-index: 1;
     padding: 0 60px 30px;
     overflow-x: hidden;
+    height: 100%;
   }
   .sidebar{
     position: fixed;
@@ -160,6 +161,7 @@ export default {
     }
     .content{
       padding-left: 0;
+      height: 100%;
     }
     .sidebar{
       box-sizing: border-box;
@@ -180,6 +182,7 @@ export default {
     }
     .home{
       padding-top: 0;
+      height: 100%;
     }
     .mobile-list{
       display: block;
