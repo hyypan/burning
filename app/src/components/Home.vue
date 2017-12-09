@@ -42,7 +42,7 @@
         </el-pagination>
       </div>
       <div id="p2" class="block">
-        <el-pagination
+        <el-pagination class="aaa"
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
           :current-page.sync="currentPage3"
@@ -155,6 +155,7 @@ export default {
   #p1{
     display: none;
   }
+
   .mobile-list li{
     display: list-item;
 
@@ -177,8 +178,8 @@ export default {
   .right-menu{
     width: 52px;
     position: fixed;
-    bottom: 10px;
-    right: 29px;
+    bottom: 75px;
+    right: 5px;
     z-index: 2;
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -241,6 +242,9 @@ export default {
   }
   }
   @media screen and (max-width: 900px) {
+    .aaa{
+
+    }
     #p1{
       display: block;
     }

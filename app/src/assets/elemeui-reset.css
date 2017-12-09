@@ -36,6 +36,14 @@
   -o-transform:scale(2);
   -moz-transform:scale(2);
 }
-.el-pagination{
-  padding: 30px 0;
-}
+ @media screen and (max-width: 900px) {
+   .el-pagination {
+     padding: 30px 0;
+     transform: scale(0.9);
+    -ms-transform: scale(0.9);
+     -webkit-transform: scale(0.9);
+     -o-transform: scale(0.9);
+     -moz-transform: scale(0.9);
+     margin-left: -20px;
+   }
+ }
