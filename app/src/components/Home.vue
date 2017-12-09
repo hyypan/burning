@@ -10,17 +10,48 @@
             </li>
           <li v-for="item in items" class="otherLi-h">{{item}}</li>
           </ul>
-          <div class="list">
-            <ul class="articles">
-          <li v-for="item in Articles" class="otherLi-h">{{item}}</li>
-            </ul>
-          </div>
         </div>
       </div>
       <div class="content guide with-sidebar components-guide">
-组件 (Component) 是 Vue.js 最强大的功能之一。组件可以扩展 HTML 元素，封装可重用的代码。在较高层面上，组件是自定义元素，Vue.js
- 的编译器为它添加特殊功能。在有些情况下，组件也可以表现为用 is 特性进行了扩展的原生 HTML 元素。
-所有的 Vue 组件同时也都是 Vue 的实例，所以可接受相同的选项对象 (除了一些根级特有的选项) 并提供相同的生命周期钩子。
+        <div class="list">
+            <ul class="articles">
+              <li v-for="item in Articles" class="otherLi-h">
+                <div>{{item.title}}</div>
+                <div class="a-text">{{item.content}}</div>
+                <ul class="a-belongs">
+                  <li><i class="el-icon-view">
+                  </i>{{item.belongs.views}}</li>
+                  <li><i class="el-icon-time">
+                  </i>{{item.belongs.create_time}}</li>
+                  <li><i class="el-icon-edit">
+                  </i>{{item.belongs.comments}}</li>
+                  <li><i class="el-icon-star-off">
+                  </i>{{item.belongs.appreciate}}</li>
+
+                </ul>
+              </li>
+            </ul>
+        </div>
+      <div id="p1" class="block">
+        <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          layout="prev, pager, next"
+          background
+          :total="200">
+        </el-pagination>
+      </div>
+      <div id="p2" class="block">
+        <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page.sync="currentPage3"
+          background
+          :page-size="4"
+          layout=" total ,prev, pager, next, jumper"
+          :total="1000">
+        </el-pagination>
+        </div>
       </div>
       <div class="right-menu">
         <ul>
@@ -46,7 +77,27 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       input: '',
       items: ['Vue', 'Python', 'Linux', '生活', '游戏'],
-      Articles: ['Django建模', 'Mysql数据库讲解', 'Linux初识', 'Vue的初步学习', '运维之路', 'sql优化的n种方法']
+      currentPage3: 4,
+      Articles: [
+        {
+          'title': 'Django建模',
+          'content': '在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 XSS 攻击。只在可信内容上使用 v-html，永不用在用户提交的内容上。在单文件组件里，scoped 的样式不会应用在 v-html 内部，因为那部分 HTML 没有被 Vue 的模板编译器处理。如果你希望针对 v-html 的内容设置带作用域的 CSS，你可以替换为 CSS Modules 或用一个额外的全局 <style> 元素手动设置类似 BEM 的作用域策略。',
+          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'appreciate': 2}},
+        {'title': 'Mysql数据库讲解',
+          'content': 'baabfsfnsn',
+          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'appreciate': 2}},
+        {'title': 'Linux初识',
+          'content': 'baabfsfnsn',
+          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'appreciate': 2}},
+        {'title': 'Vue的初步学习',
+          'content': 'baabfsfnsn',
+          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'appreciate': 2}},
+        {'title': '运维之路',
+          'content': 'baabfsfnsn',
+          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'appreciate': 2}},
+        {'title': 'sql优化的n种方法',
+          'content': 'baabfsfnsn',
+          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'appreciate': 2}}]
 
     }
   },
@@ -62,6 +113,12 @@ export default {
   methods: {
     goTop: function () {
       document.body.scrollTop = document.documentElement.scrollTop = 0
+    },
+    handleSizeChange (val) {
+      console.log(`每页 ${val} 条`)
+    },
+    handleCurrentChange (val) {
+      console.log(`当前页: ${val}`)
     }
   },
   created: function () {
@@ -71,6 +128,33 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .otherLi-h{
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+  }
+  .a-text{
+    padding-top: 10px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+  .articles{
+    padding-top: 10px;
+    padding-left: 3px;
+
+  }
+  .a-belongs{
+    margin-left: -42px;
+  }
+  .a-belongs li{
+    display: inline-block !important;
+    list-style-type: none;
+    padding: 5px;
+  }
+  #p1{
+    display: none;
+  }
   .mobile-list li{
     display: list-item;
 
@@ -111,13 +195,13 @@ export default {
   .mobile-list{
     display: none;
   }
-  .home {
-  padding-top: 61px;
-  }
+  /*.home {*/
+  /*padding-top: 61px;*/
+  /*}*/
   #main{
     position: relative;
     z-index: 1;
-    padding: 0 60px 30px;
+    /*padding: 0 60px 30px;*/
     overflow-x: hidden;
     height: 100%;
   }
@@ -148,14 +232,21 @@ export default {
     display: list-item;
     text-align: -webkit-match-parent;
     margin-top: 7px;
+    list-style-type: none;
 
   }
   @media screen and (max-width: 1300px){
   .content.with-sidebar {
-    margin-left: 290px;
+    /*margin-left: 290px;*/
   }
   }
   @media screen and (max-width: 900px) {
+    #p1{
+      display: block;
+    }
+    #p2{
+      display: none;
+    }
     .content.with-sidebar {
       margin: auto;
     }
@@ -186,6 +277,10 @@ export default {
     }
     .mobile-list{
       display: block;
+    }
+    .mobile-list li{
+      margin-top: 10px;
+
     }
     .open {
       -webkit-transform: translate(0, 0);
