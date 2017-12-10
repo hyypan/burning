@@ -8,7 +8,7 @@
             <li>
               <el-input v-model="input" placeholder="请输入内容"></el-input>
             </li>
-          <li v-for="item in items" class="otherLi-h">{{item}}</li>
+          <li v-for="item in items" class="otherLi-o">{{item}}</li>
           </ul>
         </div>
       </div>
@@ -16,8 +16,10 @@
         <div class="list">
             <ul class="articles">
               <li v-for="item in Articles" class="otherLi-h">
-                <div>{{item.title}}</div>
+                <div class="activeArticles" @click="articleDetail(item)">
+                <div :value="item">{{item.title}}</div>
                 <div class="a-text">{{item.content}}</div>
+                </div>
                 <ul class="a-belongs">
                   <li><i class="el-icon-view">
                   </i>{{item.belongs.views}}</li>
@@ -105,12 +107,15 @@ export default {
     HeaderComponents, FooterComponents
   },
   mounted: function () {
-    $('.otherLi-h').eq(0).addClass('bottomLine')
-    $('.otherLi-h').hover(function () {
+    $('.otherLi-o').eq(0).addClass('bottomLine')
+    $('.otherLi-o').hover(function () {
       $(this).addClass('bottomLine').siblings().removeClass('bottomLine')
     })
   },
   methods: {
+    articleDetail: function (item) {
+      console.log(item)
+    },
     goTop: function () {
       document.body.scrollTop = document.documentElement.scrollTop = 0
     },
@@ -189,9 +194,8 @@ export default {
   .content{
     position: relative;
     padding: 2.2em 0;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
-    padding-left: 50px;
   }
   .mobile-list{
     display: none;
@@ -216,6 +220,7 @@ export default {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
+    display: none;
   }
   .sidebar .sidebar-inner{
     width: 260px;
@@ -270,6 +275,7 @@ export default {
       transition: all 0.4s cubic-bezier(0.4, 0, 0, 1);
       -webkit-transform: translate(-280px, 0);
       transform: translate(-280px, 0);
+      display: block;
     }
     .sidebar-inner{
       padding: 50px 10px 10px 20px;
