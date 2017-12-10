@@ -3,8 +3,8 @@
     <select v-model="category">
       <option value="Python">Python</option>
       <option value="Linux">Linux</option>
-      <option value="Linux">生活</option>
-      <option value="Linux">游戏</option>
+      <option value="life">生活</option>
+      <option value="games">游戏</option>
     </select>
     <quill-editor v-model="articles"></quill-editor>
     <el-button type="info" plain>发布</el-button>
