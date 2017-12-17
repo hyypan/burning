@@ -1,0 +1,52 @@
+CREATE TABLE if NOT EXISTS `yp_base_model` (
+  `is_deleted` bool NOT NULL DEFAULT 0,
+  `last_update` datetime not null DEFAULT '1970-01-01',
+  `create_time` datetime not null DEFAULT '1970-01-01',
+)
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `password` varchar(128) NOT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `is_superuser` tinyint(1) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `is_staff` tinyint(1) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `date_joined` datetime NOT NULL,
+  `avatar` varchar(254) not null default '',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+CREATE TABLE if NOT EXISTS `yp_articles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `is_deleted` bool NOT NULL DEFAULT 0,
+  `last_update` datetime not null DEFAULT '1970-01-01',
+  `create_time` datetime not null DEFAULT '1970-01-01',
+  `content` text not null DEFAULT '',
+  `title` VARCHAR (256) not NULL  DEFAULT '',
+  `belongs_id` int(11) not null DEFAULT -1,
+  FOREIGN KEY (`belongs_id`)  REFERENCES yp_belongs(`id`)
+  PRIMARY KEY (`id`)
+)
+
+CREATE TABLE if NOT EXISTS `yp_belongs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `is_deleted` bool NOT NULL DEFAULT 0,
+  `last_update` datetime not null DEFAULT '1970-01-01',
+  `create_time` datetime not null DEFAULT '1970-01-01',
+  `comments` VARCHAR (256) not null DEFAULT '',
+  `views` INT (11) not NULL  DEFAULT 0,
+  `loves` int(11) not null DEFAULT 0,
+  PRIMARY KEY (`id`)
+)
+
+CREATE TABLE if NOT EXISTS `user_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT (11) not NULL  DEFAULT -1,
+  `permission` int(11) not null DEFAULT -1,
+  PRIMARY KEY (`id`)
+)
