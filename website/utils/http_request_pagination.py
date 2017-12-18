@@ -16,9 +16,10 @@ def pagination_result(object_list, serializer, page=1, page_size=15):
     result = pagination.page(page)
     data = serializer(result, many=True).data
     page_count = pagination._num_pages
-    return {"results": {
-        'page': page,
-        'page_size': page_size,
-        'total_pages': page_count,
-        'data': data
+    return {
+        "results": {
+            'page': page,
+            'page_size': page_size,
+            'total_pages': page_count,
+            'data': data
     }}

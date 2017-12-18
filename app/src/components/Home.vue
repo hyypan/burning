@@ -127,6 +127,11 @@ export default {
     }
   },
   created: function () {
+    $.get('/api/v1/website/articles/', function (res) {
+      console.log(222)
+    }).error(function (error) {
+      console.log(error)
+    })
   }
 }
 </script>
