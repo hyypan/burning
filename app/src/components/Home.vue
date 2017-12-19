@@ -26,9 +26,9 @@
                   <li><i class="el-icon-time">
                   </i>{{item.belongs.create_time}}</li>
                   <li><i class="el-icon-edit">
-                  </i>{{item.belongs.comments}}</li>
+                  </i>{{item.belongs.comments_count}}</li>
                   <li><i class="el-icon-star-off">
-                  </i>{{item.belongs.appreciate}}</li>
+                  </i>{{item.belongs.loves}}</li>
 
                 </ul>
               </li>
@@ -84,22 +84,13 @@ export default {
         {
           'title': 'Django建模',
           'content': '在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 XSS 攻击。只在可信内容上使用 v-html，永不用在用户提交的内容上。在单文件组件里，scoped 的样式不会应用在 v-html 内部，因为那部分 HTML 没有被 Vue 的模板编译器处理。如果你希望针对 v-html 的内容设置带作用域的 CSS，你可以替换为 CSS Modules 或用一个额外的全局 <style> 元素手动设置类似 BEM 的作用域策略。',
-          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'appreciate': 2}},
+          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'loves': 2}},
         {'title': 'Mysql数据库讲解',
           'content': 'baabfsfnsn',
-          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'appreciate': 2}},
+          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'loves': 2}},
         {'title': 'Linux初识',
           'content': 'baabfsfnsn',
-          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'appreciate': 2}},
-        {'title': 'Vue的初步学习',
-          'content': 'baabfsfnsn',
-          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'appreciate': 2}},
-        {'title': '运维之路',
-          'content': 'baabfsfnsn',
-          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'appreciate': 2}},
-        {'title': 'sql优化的n种方法',
-          'content': 'baabfsfnsn',
-          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'appreciate': 2}}]
+          'belongs': {'views': 10, 'create_time': '2017-11-11', 'comments': 3, 'loves': 2}}]
 
     }
   },
@@ -127,8 +118,10 @@ export default {
     }
   },
   created: function () {
+    let that = this
     $.get('/api/v1/website/articles/', function (res) {
-      console.log(222)
+      that.Articles = res['results']['data']
+      console.log('fdsfs', that.Articles)
     }).error(function (error) {
       console.log(error)
     })

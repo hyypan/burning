@@ -25,7 +25,7 @@ LOGGING = {
             'level': 'DEBUG',
             # 'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
-            'formatter': 'simple'
+            'formatter': 'verbose'
         },
         'mail_admins': {
             'level': 'ERROR',
@@ -36,6 +36,7 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['console'],
+            'level': 'INFO',
             'propagate': True,
         },
         'django.request': {

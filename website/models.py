@@ -29,8 +29,16 @@ class UserPermissions(models.Model):
         db_table = 'user_user_permissions'
 
 
+class Comments(BaseModel):
+    content = models.CharField(help_text='评论', max_length=256, default='')
+    user = models.ForeignKey(User)
+    belongs = models.ForeignKey('Belongs')
+
+    class Meta:
+        db_table = 'yp_comments'
+
+
 class Belongs(BaseModel):
-    comments = models.CharField(help_text='评论', max_length=256)
     views = models.IntegerField(help_text='浏览次数', default=0)
     loves = models.IntegerField(help_text='赞次数', default=0)
 

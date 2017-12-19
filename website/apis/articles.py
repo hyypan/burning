@@ -17,6 +17,6 @@ logger = logging.getLogger(__name__)
 def articles(request):
     if request.method == 'GET':
         articles_list = Articles.objects.all()
-        print 1111
+        logging.info(111)
         data = pagination_result(articles_list, read_serializer.ArticlesSerializer)
         return Response(data)

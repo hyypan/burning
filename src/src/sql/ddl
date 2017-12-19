@@ -50,3 +50,14 @@ CREATE TABLE if NOT EXISTS `user_permission` (
   `permission` int(11) not null DEFAULT -1,
   PRIMARY KEY (`id`)
 )
+
+CREATE TABLE if NOT EXISTS `yp_comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `is_deleted` bool NOT NULL DEFAULT 0,
+  `last_update` datetime not null DEFAULT '1970-01-01',
+  `create_time` datetime not null DEFAULT '1970-01-01',
+  `user_id` INT (11) not NULL  DEFAULT -1,
+  `belongs_id` int(11) not null DEFAULT -1,
+  `content` VARCHAR (156) NOT NULL  DEFAULT '',
+  PRIMARY KEY (`id`)
+)
