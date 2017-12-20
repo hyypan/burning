@@ -1,4 +1,10 @@
 # coding:utf-8
+import os
+
+import environ
+
+
+print (os.path.join(str(environ.Path(__file__)-3)))
 
 LOGGING = {
     'version': 1,
@@ -12,10 +18,10 @@ LOGGING = {
         },
     },
     'filters': {
-        'special': {
-            '()': 'project.logging.SpecialFilter',
-            'foo': 'bar',
-        },
+        # 'special': {
+        #     '()': 'project.logging.SpecialFilter',
+        #     'foo': 'bar',
+        # },
         'require_debug_true': {
             '()': 'django.utils.log.RequireDebugTrue',
         },
@@ -25,13 +31,20 @@ LOGGING = {
             'level': 'DEBUG',
             # 'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
+            'formatter': 'simple'
         },
         'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler',
-            'filters': ['special']
-        }
+            # 'filters': ['special']
+        },
+        'file': {
+            'level': 'DEBUG',
+            # 'filters': ['require_debug_true'],
+            'class': 'logging.handlers.WatchedFileHandler',
+            'filename': os.path.join(str(environ.Path(__file__)-3), 'logs/app.log'),
+            'formatter': 'verbose'
+        },
     },
     'loggers': {
         'django': {
@@ -45,9 +58,9 @@ LOGGING = {
             'propagate': False,
         },
         'website': {
-            'handlers': ['console', 'mail_admins'],
+            'handlers': ['console', 'file'],
             'level': 'DEBUG',
-            'propagate': False
+            'propagate': True
 
             # 'filters': ['special']
         }

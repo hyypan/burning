@@ -9,6 +9,7 @@ bin-release/
 .settings/
 env/
 env1/
+logs/
 /.env
 app/node_modules/
 # Executables

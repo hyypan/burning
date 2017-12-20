@@ -1,5 +1,6 @@
 # import the logging library
 import logging
+logger = logging.getLogger(__name__)
 
 # Get an instance of a logger
 from rest_framework.permissions import AllowAny
@@ -9,7 +10,6 @@ from website.models import *
 from website import read_serializer
 from website.utils.http_request_pagination import pagination_result
 
-logger = logging.getLogger(__name__)
 
 
 @api_view(['GET', 'POST', 'DELETED', 'PATCH'])
@@ -17,6 +17,6 @@ logger = logging.getLogger(__name__)
 def articles(request):
     if request.method == 'GET':
         articles_list = Articles.objects.all()
-        logging.info(111)
+        logger.info(111)
         data = pagination_result(articles_list, read_serializer.ArticlesSerializer)
         return Response(data)
